@@ -142,7 +142,7 @@ li {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	@include components.bgimage('/dist/img/headermini.jpeg');
+	@include components.bgimage('../dist/img/headermini.jpeg');
 
 	&__shadow {
 		@include components.bgshadow;
@@ -186,7 +186,7 @@ li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	@include components.bgimage('/dist/img/girlsmall.jpeg');
+	@include components.bgimage('./dist/img/girlsmall.jpeg');
 	background-attachment: fixed;
 	&-shadow {
 		@include components.bgshadow;
