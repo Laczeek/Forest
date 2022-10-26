@@ -1,0 +1,628 @@
+@use 'colors';
+@use 'components';
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+	scroll-padding-top: 79px;
+}
+
+body {
+	background-color: colors.$white;
+	font-size: 1.6rem;
+	color: colors.$black;
+	font-family: 'Montserrat', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: colors.$black;
+}
+li {
+	list-style: none;
+}
+//navigation styles general
+.nav {
+	position: fixed;
+	z-index: 5;
+	width: 100%;
+	height: 80px;
+	background-color: colors.$white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.fa-tree {
+		color: colors.$grey;
+	}
+	a {
+		display: inline-block;
+		transition: background-color 0.3s, color 0.3s;
+		&:hover {
+			background-color: colors.$black;
+			color: colors.$white;
+		}
+	}
+	.active {
+		background-color: colors.$black;
+		color: colors.$white;
+	}
+
+	// navigation style for mobile view
+	&-mobile {
+		padding: 0 2em;
+		display: flex;
+		.nav__title {
+			font-size: 2rem;
+		}
+		.nav__btn {
+			cursor: pointer;
+			border: 1px solid transparent;
+			padding: 0.5em;
+			&:focus {
+				outline: none;
+				border: 1px solid colors.$black;
+			}
+			&-box {
+				position: relative;
+				width: 40px;
+				height: 30px;
+			}
+			&-bars,
+			&-bars::before,
+			&-bars::after {
+				position: absolute;
+				content: '';
+				width: 100%;
+				height: 3px;
+				left: 0;
+				background-color: colors.$black;
+			}
+			&-bars {
+				top: 4px;
+			}
+			&-bars::before {
+				top: 10px;
+			}
+			&-bars::after {
+				top: 20px;
+			}
+		}
+		.nav__links {
+			position: absolute;
+			display: flex;
+			bottom: -268px;
+			left: 0;
+			flex-direction: column;
+			background-color: colors.$white;
+			width: 100%;
+			transform: translateX(-110%);
+			transition: transform 0.3s;
+			&--active {
+				transform: translateX(0);
+			}
+			a {
+				display: block;
+				padding: 1.5em 2em;
+			}
+		}
+	}
+	// navigation styles for desktop view
+	&-desktop {
+		display: none;
+		padding: 0 6em;
+		.nav__title {
+			font-size: 2.5rem;
+		}
+		.nav__links {
+			font-size: 0;
+			a {
+				font-size: 1.6rem;
+				padding: 1.9em 2em;
+			}
+		}
+	}
+}
+
+// header section
+.header.section {
+	padding: 0;
+}
+.header {
+	position: relative;
+	height: 75vh;
+	color: colors.$white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	@include components.bgimage('/dist/img/headermini.jpeg');
+
+	&__shadow {
+		@include components.bgshadow;
+	}
+
+	&__text {
+		padding: 2em;
+		h1 {
+			font-size: 3rem;
+		}
+	}
+}
+
+// section aboutus
+.aboutus.section {
+	padding: 4em 0;
+}
+.aboutus {
+	&__box {
+		&-img {
+			img {
+				width: 100%;
+                height: auto;
+			}
+		}
+		&-text {
+			padding: 1.5em 2em;
+			&-title {
+				font-weight: bold;
+				font-size: 2.3rem;
+				margin-bottom: 1em;
+			}
+		}
+	}
+}
+
+// section adventure bg image
+.adventure {
+	position: relative;
+	height: 50vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include components.bgimage('/dist/img/girlsmall.jpeg');
+	background-attachment: fixed;
+	&-shadow {
+		@include components.bgshadow;
+	}
+
+	&__box {
+		border: 1px solid colors.$white;
+
+		&-text {
+			color: colors.$white;
+			font-weight: bold;
+			font-size: 2rem;
+			padding: 1em;
+		}
+	}
+}
+
+//section offers cards
+.offers {
+	&__text {
+		text-align: center;
+		margin-bottom: 1.5em;
+	}
+	&__cards {
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
+
+		&-card {
+			width: 290px;
+			margin: 0 auto;
+			padding: 2em 3em;
+			border-radius: 5px;
+			box-shadow: 0 0 3px colors.$black;
+
+			&-title {
+				font-size: 3rem;
+				text-align: center;
+				margin-bottom: 0.5em;
+			}
+			&-price {
+				font-weight: bold;
+				font-size: 4rem;
+				text-align: center;
+				margin-bottom: 0.5em;
+			}
+			&-option {
+				padding-bottom: 0.5em;
+				.fa-check {
+					color: rgb(68, 212, 1);
+				}
+				.fa-check,
+				.fa-minus {
+					margin-right: 0.5em;
+				}
+
+				&--disabled {
+					color: colors.$grey;
+				}
+			}
+			&-btn {
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+				background: none;
+				border: none;
+				border-radius: 5px;
+				box-shadow: 0 0 3px colors.$black;
+				margin-top: 1.5em;
+				padding: 0.8em 5em;
+				color: colors.$black;
+				transition: backgroud-color 0.3s, box-shadow 0.3s;
+				cursor: pointer;
+				&--highlighted {
+					background-color: rgb(64, 203, 0);
+					box-shadow: 0 0 3px rgb(64, 203, 0);
+				}
+
+				&:hover {
+					background-color: rgb(58, 182, 0);
+					box-shadow: 0 0 3px rgb(58, 182, 0);
+				}
+			}
+		}
+	}
+
+	&__other {
+		margin-top: 2em;
+		padding: 1em;
+		width: 290px;
+		margin: 2em auto 0;
+		border-radius: 5px;
+		box-shadow: 0 0 3px colors.$black;
+		text-align: center;
+
+		&-text {
+			color: colors.$grey;
+			// margin-bottom: 0.5em;
+		}
+		&-btn {
+			position: relative;
+			display: block;
+			margin: 0 auto;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 3px colors.$grey;
+			margin-top: 1em;
+			padding: 0.8em 0;
+			color: colors.$grey;
+			transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+			cursor: pointer;
+
+			&:hover {
+				background-color: rgb(58, 182, 0);
+				box-shadow: 0 0 3px rgb(58, 182, 0);
+				color: colors.$black;
+			}
+		}
+	}
+}
+// fother styles for mobile view
+.footer {
+	background-color: colors.$footer;
+	text-align: center;
+	&__box {
+		padding: 2em;
+		&-logo {
+			font-size: 3.5rem;
+			padding-bottom: 0.5em;
+			.fa-tree {
+				color: colors.$grey;
+			}
+		}
+
+		&-other {
+			div {
+				margin-bottom: 1em;
+
+				a {
+					display: block;
+					padding: 1em;
+				}
+			}
+			div:last-child {
+				margin-bottom: 0;
+			}
+
+			&-title {
+				font-weight: bold;
+				font-size: 2.5rem;
+			}
+		}
+	}
+
+	&__company {
+		padding: 1em 0;
+	}
+}
+// styles for other offers
+.otheroffers {
+    padding: 8em 2em 4em;
+    
+ .offers__other-btn {
+    text-align: center;
+    display: inline-block;
+    padding: 1em 2.5em;
+    margin-top: 2em;
+   position: relative;
+   left: 50%;
+   transform: translateX(-50%);
+ }
+    
+}
+// styles for contact 
+.contact {
+    padding-top: 8em;
+    .wrapper {
+
+      .contact__form {
+        padding: 0 2em;
+        &-box {
+            margin-bottom: 1em;
+
+            label {
+               display: block;
+               margin-bottom: 0.5em;
+            }
+
+            input, textarea {
+                width: 100%;
+                padding: 0.5em 1em;
+                border: 1px solid colors.$grey;
+                border-radius: 5px;
+                font-size: 1.6rem;
+                &:focus {
+                    outline: none;
+                    border: 2px solid colors.$black;
+                }
+            }
+            textarea {
+                resize: vertical;
+                min-height: 150px;
+                max-height: 400px;
+            }
+        }
+        &-btn {
+            display: block;
+            border: 1px solid colors.$grey;
+            border-radius: 5px;
+            background: none;
+            font-size: 1.8rem;
+            padding: 0.5em 2em;
+            color: colors.$black;
+            margin: 0 auto 2em;
+            cursor: pointer;
+            transition: background-color .3s, color .3s;
+            
+            &:hover {
+                background-color: colors.$black;
+                color: colors.$white;
+            }
+            &:focus {
+                outline: none;
+                border: 2px solid colors.$black;
+            }
+        }
+        
+      }
+        #map {
+            width: 100%;
+           height: 400px;
+            border: 1px solid colors.$black;
+        }
+        
+    }
+}
+
+// media queries breakpoints
+@media (min-width: 768px) {
+	.header {
+		&__text {
+			h1 {
+				font-size: 3.5rem;
+			}
+			p {
+				font-size: 2rem;
+			}
+		}
+	}
+	.aboutus.section {
+		padding: 4em 2em;
+	}
+	.aboutus {
+		&__box {
+			display: flex;
+			gap: 2em;
+			align-items: center;
+			justify-content: center;
+
+			&-img {
+				width: 50%;
+			}
+			&-text {
+				padding: 0;
+				width: 50%;
+				align-self: flex-start;
+				font-size: 1.5rem;
+			}
+		}
+	}
+	.adventure {
+		&__box-text {
+			font-size: 3rem;
+			padding: 1em 2em;
+		}
+	}
+
+	.footer {
+		&__box {
+			padding: 4em 0;
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			&-logo {
+				font-size: 5rem;
+				padding-bottom: 0;
+				width: 30%;
+				.fa-tree {
+					color: colors.$grey;
+				}
+			}
+			&-other {
+				display: flex;
+				justify-content: space-evenly;
+				width: 70%;
+				text-align: left;
+
+				div {
+					margin-bottom: 0;
+
+					a {
+						display: block;
+						padding: 1em;
+					}
+				}
+
+				&-title {
+					font-weight: bold;
+					font-size: 3rem;
+					padding-left: 0.5em;
+				}
+			}
+		}
+
+		&__company {
+			padding: 1em 0;
+		}
+	}
+
+    .contact {
+      
+        .section-title {
+            margin-bottom: 2em;
+        }
+
+        .wrapper {
+            display: flex;
+            gap: 1em;
+        
+          .contact__form {
+           width: 50%;
+        
+            &-btn {
+             width: 100%;
+             margin-bottom: 0;
+            }
+          }
+            #map {
+                width: 50%;
+               height: auto;
+                border: 1px solid colors.$black;
+            }
+            
+            margin-bottom: 2em;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+	.nav {
+		&-mobile {
+			display: none;
+		}
+		&-desktop {
+			display: flex;
+		}
+	}
+	.header {
+		@include components.bgimage('/dist/img/headerbig.jpeg');
+		height: 60vh;
+		&__text {
+			padding-left: 8em;
+			h1 {
+				font-size: 4rem;
+			}
+			p {
+				font-size: 2rem;
+			}
+		}
+	}
+	.aboutus {
+		&__box {
+			&-text {
+				&-title {
+					font-size: 2.6rem;
+				}
+				font-size: 1.8rem;
+			}
+		}
+	}
+
+	.offers {
+		&__cards {
+			flex-direction: row;
+			justify-content: space-evenly;
+			gap: 0;
+			&-card {
+				margin: 0;
+			}
+		}
+		&__other {
+			width: 60%;
+
+            &-btn {
+                width: 300px;
+            }
+		}
+	}
+    .otheroffers {
+        padding: 10em 2em 4em;
+        .offers__cards-card {
+            width: 35%;
+            &-option {
+                text-align: center;
+            } 
+        }
+       .offers__other-btn {
+        margin-top: 4em;
+       }
+    }
+}
+
+@media (min-width: 1200px) {
+	.aboutus {
+		&__box {
+			gap: 3em;
+			&-text {
+				&-title {
+					font-size: 2.8rem;
+				}
+				font-size: 2.2rem;
+			}
+		}
+	}
+	.adventure {
+		@include components.bgimage('/dist/img/girlbig.jpeg');
+		&__box-text {
+			font-size: 4rem;
+			padding: 1em 4em;
+		}
+	}
+}
+@media (min-width: 1400px) {
+	.header {
+		&__text {
+			padding-left: 12em;
+		}
+	}
+}

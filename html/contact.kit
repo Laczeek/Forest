@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Myślałeś może o odpoczynku na łonie natury? Jeśli tak to świetnie, zapraszamy do naszego parku, w którym na pewno znajdziesz spokój i bliskość z naturą.">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Forest Opole - inne oferty </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./dist/css/main.min.css">
+        <script src="https://kit.fontawesome.com/95bb59977f.js" crossorigin="anonymous"></script>
+    </head>
+</head>
+
+<body>
+    <!-- @include 'nav.kit' -->
+
+    <main>
+        <section class="contact">
+            <h2 class="section-title">Skontaktuj się z nami</h2>
+            <div class="wrapper">
+                <form class="contact__form">
+                    <div class="contact__form-box">
+                        <label for="names">Twoje imię i nazwisko:</label>
+                        <input type="text" id="names">
+                    </div>
+                    <div class="contact__form-box">
+                        <label for="email">Email:</label>
+                        <input type="text" id="email">
+                    </div>
+                    <div class="contact__form-box">
+                        <label for="phone">Numer kontaktowy:</label>
+                        <input type="text" id="phone">
+                    </div>
+                    <div class="contact__form-box">
+                        <label for="msg">Twoja wiadomość:</label>
+                        <textarea id="msg"></textarea>
+                    </div>
+
+                    <button class="contact__form-btn">Wyślij</button>
+                </form>
+                <div id="map">
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+    <!-- @include 'footer.kit' -->
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIEG27knKhklSaFphCg8sJqCIvIXT5R8Y&callback=initMap">
+        </script>
+    <script src="./dist/js/main.min.js"></script>
+</body>
+
+</html>
