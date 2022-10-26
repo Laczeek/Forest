@@ -142,7 +142,7 @@ li {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	@include components.bgimage('../dist/img/headermini.jpeg');
+	@include components.bgimage('dist/img/headermini.jpeg');
 
 	&__shadow {
 		@include components.bgshadow;
@@ -186,7 +186,7 @@ li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	@include components.bgimage('./dist/img/girlsmall.jpeg');
+	@include components.bgimage('dist/img/girlsmall.jpeg');
 	background-attachment: fixed;
 	&-shadow {
 		@include components.bgshadow;
@@ -545,7 +545,7 @@ li {
 		}
 	}
 	.header {
-		@include components.bgimage('/dist/img/headerbig.jpeg');
+		@include components.bgimage('dist/img/headerbig.jpeg');
 		height: 60vh;
 		&__text {
 			padding-left: 8em;
@@ -612,7 +612,7 @@ li {
 		}
 	}
 	.adventure {
-		@include components.bgimage('/dist/img/girlbig.jpeg');
+		@include components.bgimage('dist/img/girlbig.jpeg');
 		&__box-text {
 			font-size: 4rem;
 			padding: 1em 4em;
